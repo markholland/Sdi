@@ -5,6 +5,7 @@ import java.io.*;
 
 public class EchoMultiServer {
     private static ServerSocket serverSocket = null;
+    
 
     public static void main(String[] args) {
 
@@ -18,9 +19,17 @@ public class EchoMultiServer {
 
       boolean listening = true;
       while (listening) {
-    	//EJERCICIO: aceptar una nueva conexión 
+    	//EJERCICIO: aceptar una nueva conexiï¿½n 
     	//EJERCICIO: y crear un Thread para que la gestione 
-
+    	try {
+			Socket clientSocket = serverSocket.accept();
+			new EchoMultiServerThread(clientSocket).start();
+						
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
      }
 
      try {
@@ -48,8 +57,8 @@ class EchoMultiServerThread extends Thread {
         clientSocket = socket;
         eo = new EchoObject();
         try {
-        	is = new BufferedReader(new InputStreamReader( //EJERCICIO ... )); 
-        	os = new PrintWriter( //EJERCICIO ... ); 
+        	is = new BufferedReader(new InputStreamReader( socket.getInputStream() )); 
+        	os = new PrintWriter( socket.getOutputStream() ); 
 
         } catch (IOException e) {
             System.err.println("Error sending/receiving" + e.getMessage());
@@ -66,9 +75,9 @@ class EchoMultiServerThread extends Thread {
     public void run() {
        try {
             while ((inputline = is.readLine()) != null) {
-            	//EJERCICIO: Invocar el objeto 
-            	//EJERCICIO: y devolver la respuesta por el socket 
-
+            	System.out.println(inputline);
+            	os.println(eo.echo(inputline));
+            	os.flush();
             }
             os.close();
             is.close();

@@ -28,7 +28,7 @@ public class Echo {
     		
     		output = ss.echo(input);
     		
-    		stdOut.print(output);
+    		stdOut.println(output);
     		stdOut.flush();
     		
     	}
