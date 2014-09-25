@@ -3,8 +3,10 @@ package client;
 import java.io.*;
 import java.net.*;
 
+import server.EchoObject;
+
 public class Echo {
-  private static EchoObjectStub ss;
+  private static EchoObject ss;
 
   public static void main(String[] args) {
 
@@ -12,13 +14,23 @@ public class Echo {
         System.out.println("Usage: Echo <host> <port#>");
         System.exit(1);
     }
-    ss = //EJERCICIO: crear una instancia del stub 
-    ss.setHostAndPort(args[0],Integer.parseInt(args[1]));
+    ss = new EchoObject();
+    //ss.setHostAndPort(args[0],Integer.parseInt(args[1]));
 
     BufferedReader stdIn = new BufferedReader( new InputStreamReader(System.in));
     PrintWriter stdOut = new PrintWriter(System.out);
     String input,output;
     try {
+    	while(true) {
+    		
+    		input = stdIn.readLine();
+    		
+    		output = ss.echo(input);
+    		
+    		stdOut.print(output);
+    		stdOut.flush();
+    		
+    	}
     	//EJERCICIO: el bucle infinito: 
     	//EJERCICIO: Leer de teclado //EJERCICIO: Invocar el stub 
     	//EJERCICIO: Imprimir por pantalla 
