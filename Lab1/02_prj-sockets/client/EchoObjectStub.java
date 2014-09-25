@@ -2,6 +2,7 @@ package client;
 
 import java.net.*;
 import java.io.*;
+
 import rmi.*;
 
 public class EchoObjectStub implements EchoInt {
@@ -34,10 +35,25 @@ public class EchoObjectStub implements EchoInt {
   }
 
   private synchronized void connect() throws java.rmi.RemoteException {
-	//EJERCICIO: Implemente el método connect 
+	try {
+		echoSocket = new Socket(host, port);
+		os = new PrintWriter(echoSocket.getOutputStream());
+		is = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
+	} catch (UnknownHostException e) {
+		System.out.println("Unknown Host :" + e.toString());
+        System.exit(1);
+	} catch (IOException e) {
+		System.err.println("Error sending/receiving" + e.getMessage());
+		e.printStackTrace();
+	}	
   }
 
   private synchronized void disconnect(){ 
-	//EJERCICIO: Implemente el método disconnect 
+	try {
+		echoSocket.close();
+	} catch (IOException e) {
+		System.err.println("Error sending/receiving" + e.getMessage());
+		e.printStackTrace();
+	}
   }
 }
