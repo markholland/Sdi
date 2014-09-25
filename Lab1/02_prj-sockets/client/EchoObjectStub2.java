@@ -2,7 +2,9 @@ package client;
 
 import java.net.*;
 import java.io.*;
+
 import rmi.EchoInt;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -39,11 +41,33 @@ public class EchoObjectStub2 implements EchoInt {
   }
 
   private synchronized void connect() throws java.rmi.RemoteException {
-	//EJERCICIO: lo mismo que en EchoObjectStub 
+	  try {
+		    if(echoSocket == null || echoSocket.isClosed()) {
+		    	echoSocket = new Socket(host, port);
+		    	tout = new Timeout(5,this);
+		    } else {
+		    	tout.cancel();
+		    	tout.start();
+		    }
+			os = new PrintWriter(echoSocket.getOutputStream());
+			is = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
+		} catch (UnknownHostException e) {
+			System.out.println("Unknown Host :" + e.toString());
+	        System.exit(1);
+		} catch (IOException e) {
+			System.err.println("Error sending/receiving" + e.getMessage());
+			e.printStackTrace();
+		}	
   }
 
   private synchronized void disconnect(){
-	//EJERCICIO: lo mismo que en EchoObjectStub 
+	  try {
+			echoSocket.close();
+			System.out.println("Socket closed");
+		} catch (IOException e) {
+			System.err.println("Error sending/receiving" + e.getMessage());
+			e.printStackTrace();
+		}
   }
 
   private synchronized void programDisconnection(){
@@ -52,24 +76,31 @@ public class EchoObjectStub2 implements EchoInt {
 
   class Timeout {
      Timer timer;
-     EchoObjectStub4 stub;
+     EchoObjectStub2 stub;
      int seconds;
 
-     public Timeout (int seconds, EchoObjectStub4 stub) {
+     public Timeout (int seconds, EchoObjectStub2 stub) {
        this.seconds = seconds;
        this.stub = stub;
      }
 
      public void start() {
     	//EJERCICIO 
+    	timer = new Timer();
+    	timer.schedule(new TimeoutTask(), seconds*1000);
      }
 
      public void cancel() {
     	//EJERCICIO 
+    	timer.cancel();
      }
-
+     
      class TimeoutTask extends TimerTask {
     	//EJERCICIO 
+    	public void run() {
+    		stub.disconnect();
+    		timer.cancel();
+    	}
      }
 
    }

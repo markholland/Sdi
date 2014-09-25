@@ -6,7 +6,8 @@ import java.net.*;
 import server.EchoObject;
 
 public class Echo {
-	private static EchoObjectStub ss;
+	private static EchoObjectStub2 ss;
+  //private static EchoObjectStub ss;
   //private static EchoObject ss;
 
   public static void main(String[] args) {
@@ -15,7 +16,7 @@ public class Echo {
         System.out.println("Usage: Echo <host> <port#>");
         System.exit(1);
     }
-    ss = new EchoObjectStub();
+    ss = new EchoObjectStub2();
     ss.setHostAndPort(args[0],Integer.parseInt(args[1]));
 
     BufferedReader stdIn = new BufferedReader( new InputStreamReader(System.in));
