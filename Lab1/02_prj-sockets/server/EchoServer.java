@@ -11,6 +11,7 @@ class EchoServer {
    private static BufferedReader is = null;
    private static PrintWriter os = null;
    private static String inputline = new String();
+   private static String outputline = new String();
 
    public static void main(String[] args) {
       try {
@@ -37,7 +38,8 @@ class EchoServer {
             os = new PrintWriter(clientSocket.getOutputStream());
             while ((inputline = is.readLine()) != null) {
             	 System.out.println(inputline);
-                 os.println(inputline);
+            	 outputline = eo.echo(inputline);
+                 os.println(outputline);
                  os.flush();
             }
           }
