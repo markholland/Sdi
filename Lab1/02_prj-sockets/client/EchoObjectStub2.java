@@ -18,6 +18,7 @@ public class EchoObjectStub2 implements EchoInt {
   private String output = "Error";
   private boolean connected  = false;
   Timeout tout=null;
+  private int myLock = 0;
 
 
   public void setHostAndPort(String host, int port) {
@@ -26,7 +27,9 @@ public class EchoObjectStub2 implements EchoInt {
   }
 
   public String echo(String input) throws java.rmi.RemoteException {
-    connect();
+	  
+	connect();
+	myLock = 1; // Start of critical section
     if (echoSocket != null && os != null && is != null) {
     try {
          os.println(input);
@@ -37,37 +40,44 @@ public class EchoObjectStub2 implements EchoInt {
       }
     }
     programDisconnection();
+    myLock = 0; // End of critical section
     return output;
   }
 
   private synchronized void connect() throws java.rmi.RemoteException {
-	  try {
-		    if(echoSocket == null || echoSocket.isClosed()) {
-		    	echoSocket = new Socket(host, port);
-		    	tout = new Timeout(5,this);
-		    } else {
-		    	tout.cancel();
-		    	tout.start();
-		    }
-			os = new PrintWriter(echoSocket.getOutputStream());
-			is = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
-		} catch (UnknownHostException e) {
-			System.out.println("Unknown Host :" + e.toString());
-	        System.exit(1);
-		} catch (IOException e) {
-			System.err.println("Error sending/receiving" + e.getMessage());
-			e.printStackTrace();
-		}	
+	  if(myLock == 0) { // Only connect if not sending
+		  try {
+			    if(echoSocket == null || echoSocket.isClosed()) {
+			    	echoSocket = new Socket(host, port);
+			    	tout = new Timeout(5,this);
+			    } else {
+			    	tout.cancel();
+			    	tout.start();
+			    }
+				os = new PrintWriter(echoSocket.getOutputStream());
+				is = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
+			} catch (UnknownHostException e) {
+				System.out.println("Unknown Host :" + e.toString());
+		        System.exit(1);
+			} catch (IOException e) {
+				System.err.println("Error sending/receiving" + e.getMessage());
+				e.printStackTrace();
+			}	
+	  }
   }
 
   private synchronized void disconnect(){
-	  try {
-			echoSocket.close();
-			System.out.println("Socket closed");
-		} catch (IOException e) {
-			System.err.println("Error sending/receiving" + e.getMessage());
-			e.printStackTrace();
-		}
+	  if(myLock == 0) {	 // Only disconnect if not sending
+		  try {
+			    if(!echoSocket.isClosed()) {
+			    	echoSocket.close();
+					System.out.println("Socket closed");
+			    }
+			} catch (IOException e) {
+				System.err.println("Error sending/receiving" + e.getMessage());
+				e.printStackTrace();
+			}
+	  }
   }
 
   private synchronized void programDisconnection(){

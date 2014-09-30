@@ -22,8 +22,8 @@ public class EchoMultiServer {
     	//EJERCICIO: aceptar una nueva conexi�n 
     	//EJERCICIO: y crear un Thread para que la gestione 
     	try {
-			Socket clientSocket = serverSocket.accept();
-			new EchoMultiServerThread(clientSocket).start();
+			EchoMultiServerThread thread = new EchoMultiServerThread(serverSocket.accept());
+			thread.start();
 						
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

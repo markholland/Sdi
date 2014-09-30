@@ -20,7 +20,7 @@ public class EchoObject implements EchoInt {
 
   public String echo(String input) throws java.rmi.RemoteException {
      Date h = new Date();
-     String fecha = DateFormat.getTimeInstance(3,Locale.FRANCE).format(h);
+     String fecha = DateFormat.getTimeInstance(DateFormat.LONG,Locale.FRANCE).format(h);
      String ret = myURL + ":" + fecha + "> " +  input;
      try {
            Thread.sleep(3000);  ret = ret + " (retrasada 3 segundos)";
