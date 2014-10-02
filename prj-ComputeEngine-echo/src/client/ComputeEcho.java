@@ -12,7 +12,7 @@ public class ComputeEcho {
 
 	public static void main(String[] args) {
 		if (args.length<1) {
-			System.out.println("Uso echo <host>");System.exit(1);
+			System.out.println("Uso ComputeEcho <host>");System.exit(1);
 		}
 		
 		if(System.getSecurityManager() == null) {

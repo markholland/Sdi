@@ -25,6 +25,7 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 			System.out.println("ComputeEngine bound");
 		} catch(Exception e) {
 			System.out.println("Failed to bind ComputeEngine!");
+			e.printStackTrace();
 		}
 	}
  
