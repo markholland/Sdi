@@ -1,5 +1,7 @@
 package server;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.rmi.RMISecurityManager;
 
 import java.rmi.RemoteException;
@@ -33,10 +35,15 @@ public class EchoObjectRMI implements EchoInt {
 		return eo.echo(input);
 	}
 
-	/**
+	/**d
+	 * d
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+		String myURL = "localhost";
+		
 		 if (System.getSecurityManager() == null) {
 		      System.setSecurityManager(new RMISecurityManager());
 		 }
@@ -44,11 +51,16 @@ public class EchoObjectRMI implements EchoInt {
 	            Registry registry = LocateRegistry.getRegistry();
 	            EchoInt stub = (EchoInt) UnicastRemoteObject.exportObject(new EchoObjectRMI(),0);
 	            registry.rebind("echo", stub);
+	            myURL=InetAddress.getLocalHost().getHostName();
+	            //registry.rebind("//" + myURL + "/EchoObject", stub);
 	        } catch (RemoteException e) {
 	            System.err.println("Something wrong happended on the remote end");
 	            e.printStackTrace();
 	            System.exit(-1); // can't just return, rmi threads may not exit
-	        }
+	        } catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	        System.out.println("The echo server is ready");
 
 	}

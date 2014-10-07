@@ -6,13 +6,23 @@ import compute.*;
 
 public class ComputeEngine extends UnicastRemoteObject implements Compute {
 	
+	Task wait;
+	
 	public ComputeEngine() throws RemoteException {
 		super();
 	}
 	
+	public Object execute() {
+		return wait.execute();
+	}
+	
+	public void loadTask(Task t) {
+		wait = t;
+	}
+	
 	public Object executeTask(Task t) {
 		return t.execute();
-	}
+	}	
 	
 	public static void main(String[] args) {
 		if(System.getSecurityManager() == null) {
@@ -28,5 +38,5 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 			e.printStackTrace();
 		}
 	}
- 
+
 }
