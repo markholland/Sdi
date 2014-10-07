@@ -26,7 +26,6 @@ public class ComputeEcho {
 		try {
 			String name = "//" + args[0] + "/Compute";
 			Compute comp = (Compute) Naming.lookup(name);
-			stdOut.print("> "); stdOut.flush();
 			while ( (input = stdIn.readLine())!=null) {
 				EchoObject task = new EchoObject(input);
 				comp.loadTask(task);

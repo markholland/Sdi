@@ -6,21 +6,18 @@ import compute.*;
 
 public class ComputeEngine extends UnicastRemoteObject implements Compute {
 	
-	Task cachedTask = null;
+	Task wait;
 	
 	public ComputeEngine() throws RemoteException {
 		super();
 	}
 	
 	public Object execute() {
-		if(cachedTask != null) {
-			return executeTask(cachedTask);
-		} 
-		return null;
+		return wait.execute();
 	}
 	
 	public void loadTask(Task t) {
-		cachedTask = t;
+		wait = t;
 	}
 	
 	public Object executeTask(Task t) {
