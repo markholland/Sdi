@@ -9,5 +9,5 @@
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="client.EchoRMI"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="localhost"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="prj-rmi"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-classpath Y:\Documents\workspace\prj-rmi\bin\&#13;&#10;-Djava.rmi.server.codebase=file:///Y:/Documents/workspace/prj-rmi/bin/ &#13;&#10;-Djava.security.policy=file:///Y:/Documents/workspace/prj-rmi/java.policy"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-classpath Y:/Documents/workspace/prj-rmi/bin/ &#13;&#10;-Djava.rmi.server.codebase=file:///Y:/Documents/workspace/prj-rmi/bin/ &#13;&#10;-Djava.security.policy=file:///Y:/Documents/workspace/prj-rmi/java.policy"/>
 </launchConfiguration>

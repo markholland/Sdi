@@ -8,5 +8,5 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="engine.ComputeEngine"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="prj-ComputeEngine"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-classpath Y:\Documents\workspace\prj-ComputeEngine\bin\&#13;&#10;-Djava.rmi.server.codebase=file:///Y:/Documents/workspace/prj-ComputeEngine/bin/ &#13;&#10;-Djava.security.policy=file:///Y:/Documents/workspace/prj-ComputeEngine/java.policy"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Djava.rmi.server.codebase=file:///Y:/Documents/workspace/prj-ComputeEngine/bin/ &#13;&#10;-Djava.security.policy=file:///Y:/Documents/workspace/prj-ComputeEngine/java.policy"/>
 </launchConfiguration>
