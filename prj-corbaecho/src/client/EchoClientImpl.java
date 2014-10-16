@@ -49,11 +49,11 @@ class EchoClientImpl {
 
 		Properties props = System.getProperties();
 		props.setProperty("org.omg.CORBA.ORBClass", "com.sun.corba.se.internal.POA.POAORB");
-		//props.setProperty("org.omg.CORBA.ORBClass", "com.ooc.CORBA.ORB");
 		props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.sun.corba.se.internal.corba.ORBSingleton");
+		//props.setProperty("org.omg.CORBA.ORBClass", "com.ooc.CORBA.ORB");
 		//props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.ooc.CORBA.ORBSingleton");
-		props.put("org.omg.CORBA.ORBInitialHost", "localhost");
-		props.put("org.omg.CORBA.ORBInitialPort", "1050");
+		//props.put("org.omg.CORBA.ORBInitialHost", "localhost");
+		//props.put("org.omg.CORBA.ORBInitialPort", "1050");
 
 		// Initialize the ORB
 		orb = org.omg.CORBA.ORB.init((String[])args, props);
@@ -83,11 +83,11 @@ class EchoClientImpl {
 		}
 		 */
 
-		LineNumberReader input = new LineNumberReader(new FileReader("server.ior"));
+	    LineNumberReader input = new LineNumberReader(new FileReader("server.ior"));
 		String ior = input.readLine();
 		org.omg.CORBA.Object obj = orb.string_to_object(ior);
 
-		
+		target = corba.EchoHelper.narrow(obj);
 	}
 
 	/**
