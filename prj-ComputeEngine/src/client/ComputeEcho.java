@@ -31,7 +31,8 @@ public class ComputeEcho {
 				EchoObject task = new EchoObject(input);
 				comp.loadTask(task);
 				output = (String) comp.execute();
-				System.out.println(output);
+				stdOut.println(output);
+				stdOut.flush();
 			}
 		} catch (Exception e) {
 			System.err.println("ComputeEcho exception: " + e.getMessage());

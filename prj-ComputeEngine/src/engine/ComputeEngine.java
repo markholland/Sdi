@@ -13,6 +13,7 @@ public class ComputeEngine extends UnicastRemoteObject implements Compute {
 	}
 	
 	public Object execute() {
+		
 		if(cachedTask != null) {
 			return executeTask(cachedTask);
 		} 
