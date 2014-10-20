@@ -21,8 +21,8 @@ public class Server_AOM_Echo {
 		//props.setProperty("org.omg.CORBA.ORBClass", "com.ooc.CORBA.ORB");
 		props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.sun.corba.se.internal.corba.ORBSingleton");
 		//props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.ooc.CORBA.ORBSingleton");
-		//props.put("org.omg.CORBA.ORBInitialHost", "localhost");
-		//props.put("org.omg.CORBA.ORBInitialPort", "1050");
+		props.put("org.omg.CORBA.ORBInitialHost", "localhost");
+		props.put("org.omg.CORBA.ORBInitialPort", "1050");
 
 		try {
 			// Initialize the ORB.
@@ -56,13 +56,13 @@ public class Server_AOM_Echo {
 			obj = poa.servant_to_reference(servant);
 
 			// ---- Uncomment below to enable Naming Service access. ----
-			// org.omg.CORBA.Object ncobj = orb.resolve_initial_references("NameService");
-			// NamingContextExt nc = NamingContextExtHelper.narrow(ncobj);
-			// nc.bind(nc.to_name("MyServerObject"), obj);
+			 org.omg.CORBA.Object ncobj = orb.resolve_initial_references("NameService");
+			 NamingContextExt nc = NamingContextExtHelper.narrow(ncobj);
+			 nc.bind(nc.to_name("EchoObject"), obj);
 
-			PrintWriter ps = new PrintWriter(new FileOutputStream(new File("server.ior")));
-			ps.println(orb.object_to_string(obj));
-			ps.close();
+			//PrintWriter ps = new PrintWriter(new FileOutputStream(new File("server.ior")));
+			//ps.println(orb.object_to_string(obj));
+			//ps.close();
 
 			System.out.println("CORBA Server ready...");
 

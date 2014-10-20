@@ -52,20 +52,20 @@ class EchoClientImpl {
 		props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.sun.corba.se.internal.corba.ORBSingleton");
 		//props.setProperty("org.omg.CORBA.ORBClass", "com.ooc.CORBA.ORB");
 		//props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.ooc.CORBA.ORBSingleton");
-		//props.put("org.omg.CORBA.ORBInitialHost", "localhost");
-		//props.put("org.omg.CORBA.ORBInitialPort", "1050");
+		props.put("org.omg.CORBA.ORBInitialHost", "localhost");
+		props.put("org.omg.CORBA.ORBInitialPort", "1050");
 
 		// Initialize the ORB
 		orb = org.omg.CORBA.ORB.init((String[])args, props);
 
 		// ---- Uncomment below to enable Naming Service access. ----
-		/* org.omg.CORBA.Object ncobj;
+		 org.omg.CORBA.Object ncobj;
 		try {
 			ncobj = orb.resolve_initial_references("NameService");
 			NamingContextExt nc = NamingContextExtHelper.narrow(ncobj);
-			 org.omg.CORBA.Object obj;
+			org.omg.CORBA.Object obj;
 			try {
-				obj = nc.resolve_str("MyServerObject");
+				obj = nc.resolve_str("EchoObject");
 				target = corba.EchoHelper.narrow(obj);		
 			} catch (NotFound e) {
 				// TODO Auto-generated catch block
@@ -81,13 +81,13 @@ class EchoClientImpl {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 */
+		 
 
-	    LineNumberReader input = new LineNumberReader(new FileReader("server.ior"));
-		String ior = input.readLine();
-		org.omg.CORBA.Object obj = orb.string_to_object(ior);
+	    //LineNumberReader input = new LineNumberReader(new FileReader("server.ior"));
+		//String ior = input.readLine();
+		//org.omg.CORBA.Object obj = orb.string_to_object(ior);
 
-		target = corba.EchoHelper.narrow(obj);
+		//target = corba.EchoHelper.narrow(obj);
 	}
 
 	/**
@@ -122,7 +122,8 @@ class EchoClientImpl {
 				stdOut.print("> "); stdOut.flush();
 				while ( (input = stdIn.readLine())!=null) {
 					output = test.getORBInterface().echo(input);
-					System.out.println(output);
+					stdOut.println(output);
+					stdOut.flush();
 				}
 				
 				test.shutdown();
