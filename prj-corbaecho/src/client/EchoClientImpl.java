@@ -26,7 +26,7 @@ class EchoClientImpl {
 	 * @throws IOException
 	 */
 	public EchoClientImpl() throws IOException {
-		initORB(null);
+		initORB(new String[0]);
 	}
 
 	/**

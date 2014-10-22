@@ -5,8 +5,8 @@ permission java.net.SocketPermission "*:1024-65535", "connect,accept,resolve";
 };
 
 
-grant codeBase "file:///Y:/Documents/workspace/prj-ComputeEngine/bin/" {
+grant codeBase "file:///Y:/Documents/workspace/-" {
 	
-permission java.security.AllPermission "", "";
+permission java.security.AllPermission;
 
 };

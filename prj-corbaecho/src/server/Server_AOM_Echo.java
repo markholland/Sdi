@@ -17,10 +17,12 @@ public class Server_AOM_Echo {
 	public static void main(String[] args) {
 
 		Properties props = System.getProperties();
-		props.setProperty("org.omg.CORBA.ORBClass", "com.sun.corba.se.internal.POA.POAORB");
-		//props.setProperty("org.omg.CORBA.ORBClass", "com.ooc.CORBA.ORB");
-		props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.sun.corba.se.internal.corba.ORBSingleton");
-		//props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.ooc.CORBA.ORBSingleton");
+		if(props.getProperty("org.omg.CORBA.ORBClass")==null){
+			props.setProperty("org.omg.CORBA.ORBClass", "com.sun.corba.se.internal.POA.POAORB");
+			//props.setProperty("org.omg.CORBA.ORBClass", "com.ooc.CORBA.ORB");
+			props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.sun.corba.se.internal.corba.ORBSingleton");
+			//props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.ooc.CORBA.ORBSingleton");
+		}
 		props.put("org.omg.CORBA.ORBInitialHost", "localhost");
 		props.put("org.omg.CORBA.ORBInitialPort", "1050");
 
@@ -58,7 +60,7 @@ public class Server_AOM_Echo {
 			// ---- Uncomment below to enable Naming Service access. ----
 			 org.omg.CORBA.Object ncobj = orb.resolve_initial_references("NameService");
 			 NamingContextExt nc = NamingContextExtHelper.narrow(ncobj);
-			 nc.bind(nc.to_name("EchoObject"), obj);
+			 nc.rebind(nc.to_name("EchoObject"), obj);
 
 			//PrintWriter ps = new PrintWriter(new FileOutputStream(new File("server.ior")));
 			//ps.println(orb.object_to_string(obj));

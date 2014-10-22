@@ -17,7 +17,7 @@ public class EchoObject {
 
   public String echo(String input) {
      Date h = new Date();
-     String fecha = DateFormat.getTimeInstance(3,Locale.FRANCE).format(h);
+     String fecha = DateFormat.getTimeInstance(DateFormat.LONG,Locale.FRANCE).format(h);
 
      String ret = myURL + ":" + fecha + "> " +  input;
      try {
