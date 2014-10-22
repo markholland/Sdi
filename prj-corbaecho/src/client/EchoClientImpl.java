@@ -48,13 +48,17 @@ class EchoClientImpl {
 	public void initORB(String[] args) throws IOException {
 
 		Properties props = System.getProperties();
-		props.setProperty("org.omg.CORBA.ORBClass", "com.sun.corba.se.internal.POA.POAORB");
-		props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.sun.corba.se.internal.corba.ORBSingleton");
-		//props.setProperty("org.omg.CORBA.ORBClass", "com.ooc.CORBA.ORB");
-		//props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.ooc.CORBA.ORBSingleton");
-		props.put("org.omg.CORBA.ORBInitialHost", "localhost");
-		props.put("org.omg.CORBA.ORBInitialPort", "1050");
-
+		if(props.getProperty("org.omg.CORBA.ORBClass")==null){
+			props.setProperty("org.omg.CORBA.ORBClass", "com.sun.corba.se.internal.POA.POAORB");
+			props.setProperty("org.omg.CORBA.ORBSingletonClass", "com.sun.corba.se.internal.corba.ORBSingleton");
+			props.put("org.omg.CORBA.ORBInitialHost", "localhost");
+			props.put("org.omg.CORBA.ORBInitialPort", "1050");
+		} 
+		
+		//props.put("org.omg.CORBA.ORBClass", "com.ooc.CORBA.ORB");
+		//props.put("org.omg.CORBA.ORBSingletonClass", "com.ooc.CORBA.ORBSingleton");
+		//props.put("ooc.orb.service.NameService", "corbaloc::localhost:1111/NameService");
+		
 		// Initialize the ORB
 		orb = org.omg.CORBA.ORB.init((String[])args, props);
 
