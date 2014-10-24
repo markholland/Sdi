@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="C:/dya/servers/orbacus/lib/corba.jar"/>
+	<classpathentry kind="lib" path="C:/dya/servers/orbacus/lib/difusion.jar"/>
+	<classpathentry kind="lib" path="C:/dya/servers/orbacus/lib/OB.jar"/>
+	<classpathentry kind="lib" path="C:/dya/servers/orbacus/lib/OBNaming.jar"/>
+	<classpathentry kind="lib" path="C:/dya/servers/orbacus/lib/OBUtil.jar"/>
+	<classpathentry kind="lib" path="C:/dya/servers/orbacus/lib/camara.jar"/>
+	<classpathentry kind="lib" path="C:/dya/servers/orbacus/lib/robot.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
