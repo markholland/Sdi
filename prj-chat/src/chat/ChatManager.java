@@ -104,10 +104,10 @@ public class ChatManager implements javax.jms.MessageListener{
 	}
 	public void close() {
 		try { 
-			subscriber.close( ); 
+			subscriber.close(); 
 			publisher.close();
-			if (durable) sus_session.unsubscribe(durablename);
-			connection.close( );
+			if (!durable) sus_session.unsubscribe(durablename);
+			connection.close();
 			this.factory = null;
 			this.connection = null;
 			this.dest = null;
