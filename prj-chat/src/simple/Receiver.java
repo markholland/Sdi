@@ -25,7 +25,7 @@ public class Receiver implements javax.jms.MessageListener{
     Topic dest = null;
     TopicSession session = null;
     TopicSubscriber subscriber = null;
-    String username ="Paco";
+    String username ="The receiver";
     int count =0;
     
 	public Receiver() throws Exception {

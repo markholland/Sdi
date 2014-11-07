@@ -24,7 +24,7 @@ public class Sender {
     Topic dest = null;
     TopicSession session = null;
     TopicPublisher publisher = null;
-    String username ="Pepe";
+    String username ="The sender";
     
 	public Sender() throws Exception {
         try {
