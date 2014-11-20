@@ -5,9 +5,19 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
+
+import rmi.EchoInt;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.rmi.Naming;
+import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 
 public class EchoApplet extends JApplet {
 	private JTextField textoHost;
@@ -15,6 +25,12 @@ public class EchoApplet extends JApplet {
 	private JTextField textoReceived;
 	private JTextField textoPort;
 	private JLabel jLabelStatusResult;
+	
+	
+	public void init() {
+	     this.setSize(440, 280);
+	  }
+	
 	public EchoApplet() {
 		getContentPane().setLayout(null);
 		
@@ -52,6 +68,28 @@ public class EchoApplet extends JApplet {
 		getContentPane().add(jLabelSend);
 		
 		textoSend = new JTextField();
+		textoSend.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				int key = arg0.getKeyCode();
+				if(key == KeyEvent.VK_ENTER) {
+					System.out.println("Enter pressed: "+arg0.getKeyChar());
+					if(System.getSecurityManager()== null) 
+						//Para usar esto hay que definir un fichero de política de seguridad.
+							System.setSecurityManager(new RMISecurityManager());
+							String output;
+					        try {
+					          EchoInt obj = (EchoInt) Naming.lookup("echo");  // Obtain reference from name server
+					          output = obj.echo(textoSend.getText());	 
+					          textoReceived.setText(output);
+				          
+					        }catch(Exception e) {
+					              System.out.println("Error en el cliente de echo RMI : " + e.getMessage());
+					              jLabelStatusResult.setText("No se pudo comunicar con el server");
+					        }
+				}
+			}
+		});
 		textoSend.setBounds(114, 99, 305, 32);
 		getContentPane().add(textoSend);
 		
