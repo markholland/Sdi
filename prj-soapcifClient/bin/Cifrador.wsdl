@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services" xmlns:intf="http://services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="cifra">
+    <complexType>
+     <sequence>
+      <element name="input" type="xsd:string"/>
+      <element name="clave" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cifraResponse">
+    <complexType>
+     <sequence>
+      <element name="cifraReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="descifra">
+    <complexType>
+     <sequence>
+      <element name="input" type="xsd:string"/>
+      <element name="clave" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="descifraResponse">
+    <complexType>
+     <sequence>
+      <element name="descifraReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="cifraResponse">
+
+      <wsdl:part element="impl:cifraResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cifraRequest">
+
+      <wsdl:part element="impl:cifra" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="descifraRequest">
+
+      <wsdl:part element="impl:descifra" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="descifraResponse">
+
+      <wsdl:part element="impl:descifraResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Cifrador">
+
+      <wsdl:operation name="cifra">
+
+         <wsdl:input message="impl:cifraRequest" name="cifraRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cifraResponse" name="cifraResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="descifra">
+
+         <wsdl:input message="impl:descifraRequest" name="descifraRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:descifraResponse" name="descifraResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CifradorSoapBinding" type="impl:Cifrador">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="cifra">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cifraRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cifraResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="descifra">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="descifraRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="descifraResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CifradorService">
+
+      <wsdl:port binding="impl:CifradorSoapBinding" name="Cifrador">
+
+         <wsdlsoap:address location="http://localhost:8080/prj-soapcif/services/Cifrador"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
