@@ -51,14 +51,14 @@ public class Eurocal_ServiceLocator extends org.apache.axis.client.Service imple
     }
 
     public org.example.www.eurocal.Eurocal_PortType geteurocalSOAP(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
-        try {
-            org.example.www.eurocal.EurocalSOAPStub _stub = new org.example.www.eurocal.EurocalSOAPStub(portAddress, this);
-            _stub.setPortName(geteurocalSOAPWSDDServiceName());
+        //try {
+            org.example.www.eurocal.EurocalSOAPImpl _stub = new org.example.www.eurocal.EurocalSOAPImpl();
+            //_stub.setPortName(geteurocalSOAPWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        //}
+        /*catch (org.apache.axis.AxisFault e) {
             return null;
-        }
+        }*/
     }
 
     public void seteurocalSOAPEndpointAddress(java.lang.String address) {
