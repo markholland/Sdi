@@ -22,7 +22,7 @@ public class Eurocal_ServiceLocator extends org.apache.axis.client.Service imple
     }
 
     // Use to get a proxy class for eurocalSOAP
-    private java.lang.String eurocalSOAP_address = "http://localhost:8080/prj-soap2/services/eurocalSOAP";
+    private java.lang.String eurocalSOAP_address = "http://localhost:8080/prj-soap/services/eurocalSOAP";
 
     public java.lang.String geteurocalSOAPAddress() {
         return eurocalSOAP_address;

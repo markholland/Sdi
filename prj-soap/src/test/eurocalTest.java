@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 
 import javax.xml.rpc.ServiceException;
 
-import org.example.www.eurocal.EurocalSOAPImpl;
 import org.example.www.eurocal.Eurocal_PortType;
 import org.example.www.eurocal.Eurocal_ServiceLocator;
 
@@ -25,7 +24,7 @@ public class eurocalTest {
 
 		try {
 			converted = stub.convertirAEuros(currency, amount);
-			System.out.printf("%.2f %s is %.2f in Euros", amount, currency, converted);
+			System.out.println(amount+currency+" is "+converted+" in Euros");
 		} catch (RemoteException e) {
 			System.out.println("Servicio no disponible o fuera de línea. ");
 			//return;
@@ -33,7 +32,7 @@ public class eurocalTest {
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 			return;
-		} 
+		}
 		
 	}
 }

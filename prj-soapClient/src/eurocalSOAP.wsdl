@@ -86,7 +86,7 @@
   </wsdl:binding>
   <wsdl:service name="eurocal">
     <wsdl:port binding="tns:eurocalSOAP" name="eurocalSOAP">
-      <soap:address location="http://localhost:8080/prj-soap2/services/eurocalSOAP"/>
+      <soap:address location="http://localhost:8080/prj-soap/services/eurocalSOAP"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
