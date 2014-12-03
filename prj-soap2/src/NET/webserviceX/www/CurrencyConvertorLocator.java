@@ -1,59 +1,59 @@
 /**
- * Eurocal_ServiceLocator.java
+ * CurrencyConvertorLocator.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package org.example.www.eurocal;
+package NET.webserviceX.www;
 
-public class Eurocal_ServiceLocator extends org.apache.axis.client.Service implements org.example.www.eurocal.Eurocal_Service {
+public class CurrencyConvertorLocator extends org.apache.axis.client.Service implements NET.webserviceX.www.CurrencyConvertor {
 
-    public Eurocal_ServiceLocator() {
+    public CurrencyConvertorLocator() {
     }
 
 
-    public Eurocal_ServiceLocator(org.apache.axis.EngineConfiguration config) {
+    public CurrencyConvertorLocator(org.apache.axis.EngineConfiguration config) {
         super(config);
     }
 
-    public Eurocal_ServiceLocator(java.lang.String wsdlLoc, javax.xml.namespace.QName sName) throws javax.xml.rpc.ServiceException {
+    public CurrencyConvertorLocator(java.lang.String wsdlLoc, javax.xml.namespace.QName sName) throws javax.xml.rpc.ServiceException {
         super(wsdlLoc, sName);
     }
 
-    // Use to get a proxy class for eurocalSOAP
-    private java.lang.String eurocalSOAP_address = "http://www.example.org/";
+    // Use to get a proxy class for CurrencyConvertorSoap
+    private java.lang.String CurrencyConvertorSoap_address = "http://www.webservicex.net/CurrencyConvertor.asmx";
 
-    public java.lang.String geteurocalSOAPAddress() {
-        return eurocalSOAP_address;
+    public java.lang.String getCurrencyConvertorSoapAddress() {
+        return CurrencyConvertorSoap_address;
     }
 
     // The WSDD service name defaults to the port name.
-    private java.lang.String eurocalSOAPWSDDServiceName = "eurocalSOAP";
+    private java.lang.String CurrencyConvertorSoapWSDDServiceName = "CurrencyConvertorSoap";
 
-    public java.lang.String geteurocalSOAPWSDDServiceName() {
-        return eurocalSOAPWSDDServiceName;
+    public java.lang.String getCurrencyConvertorSoapWSDDServiceName() {
+        return CurrencyConvertorSoapWSDDServiceName;
     }
 
-    public void seteurocalSOAPWSDDServiceName(java.lang.String name) {
-        eurocalSOAPWSDDServiceName = name;
+    public void setCurrencyConvertorSoapWSDDServiceName(java.lang.String name) {
+        CurrencyConvertorSoapWSDDServiceName = name;
     }
 
-    public org.example.www.eurocal.Eurocal_PortType geteurocalSOAP() throws javax.xml.rpc.ServiceException {
+    public NET.webserviceX.www.CurrencyConvertorSoap getCurrencyConvertorSoap() throws javax.xml.rpc.ServiceException {
        java.net.URL endpoint;
         try {
-            endpoint = new java.net.URL(eurocalSOAP_address);
+            endpoint = new java.net.URL(CurrencyConvertorSoap_address);
         }
         catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
-        return geteurocalSOAP(endpoint);
+        return getCurrencyConvertorSoap(endpoint);
     }
 
-    public org.example.www.eurocal.Eurocal_PortType geteurocalSOAP(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+    public NET.webserviceX.www.CurrencyConvertorSoap getCurrencyConvertorSoap(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         try {
-            org.example.www.eurocal.EurocalSOAPStub _stub = new org.example.www.eurocal.EurocalSOAPStub();
-            _stub.setPortName(geteurocalSOAPWSDDServiceName());
+            NET.webserviceX.www.CurrencyConvertorSoapStub _stub = new NET.webserviceX.www.CurrencyConvertorSoapStub(portAddress, this);
+            _stub.setPortName(getCurrencyConvertorSoapWSDDServiceName());
             return _stub;
         }
         catch (org.apache.axis.AxisFault e) {
@@ -61,8 +61,8 @@ public class Eurocal_ServiceLocator extends org.apache.axis.client.Service imple
         }
     }
 
-    public void seteurocalSOAPEndpointAddress(java.lang.String address) {
-        eurocalSOAP_address = address;
+    public void setCurrencyConvertorSoapEndpointAddress(java.lang.String address) {
+        CurrencyConvertorSoap_address = address;
     }
 
     /**
@@ -72,9 +72,9 @@ public class Eurocal_ServiceLocator extends org.apache.axis.client.Service imple
      */
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
-            if (org.example.www.eurocal.Eurocal_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
-                org.example.www.eurocal.EurocalSOAPStub _stub = new org.example.www.eurocal.EurocalSOAPStub(new java.net.URL(eurocalSOAP_address), this);
-                _stub.setPortName(geteurocalSOAPWSDDServiceName());
+            if (NET.webserviceX.www.CurrencyConvertorSoap.class.isAssignableFrom(serviceEndpointInterface)) {
+                NET.webserviceX.www.CurrencyConvertorSoapStub _stub = new NET.webserviceX.www.CurrencyConvertorSoapStub(new java.net.URL(CurrencyConvertorSoap_address), this);
+                _stub.setPortName(getCurrencyConvertorSoapWSDDServiceName());
                 return _stub;
             }
         }
@@ -94,8 +94,8 @@ public class Eurocal_ServiceLocator extends org.apache.axis.client.Service imple
             return getPort(serviceEndpointInterface);
         }
         java.lang.String inputPortName = portName.getLocalPart();
-        if ("eurocalSOAP".equals(inputPortName)) {
-            return geteurocalSOAP();
+        if ("CurrencyConvertorSoap".equals(inputPortName)) {
+            return getCurrencyConvertorSoap();
         }
         else  {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
@@ -105,7 +105,7 @@ public class Eurocal_ServiceLocator extends org.apache.axis.client.Service imple
     }
 
     public javax.xml.namespace.QName getServiceName() {
-        return new javax.xml.namespace.QName("http://www.example.org/eurocal/", "eurocal");
+        return new javax.xml.namespace.QName("http://www.webserviceX.NET/", "CurrencyConvertor");
     }
 
     private java.util.HashSet ports = null;
@@ -113,7 +113,7 @@ public class Eurocal_ServiceLocator extends org.apache.axis.client.Service imple
     public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("http://www.example.org/eurocal/", "eurocalSOAP"));
+            ports.add(new javax.xml.namespace.QName("http://www.webserviceX.NET/", "CurrencyConvertorSoap"));
         }
         return ports.iterator();
     }
@@ -123,8 +123,8 @@ public class Eurocal_ServiceLocator extends org.apache.axis.client.Service imple
     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         
-if ("eurocalSOAP".equals(portName)) {
-            seteurocalSOAPEndpointAddress(address);
+if ("CurrencyConvertorSoap".equals(portName)) {
+            setCurrencyConvertorSoapEndpointAddress(address);
         }
         else 
 { // Unknown Port Name
