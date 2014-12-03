@@ -25,7 +25,7 @@ public class eurocalTest {
 
 		try {
 			converted = stub.convertirAEuros(currency, amount);
-			System.out.println(amount+" "+currency+" is "+converted+" in Euros");
+			System.out.printf("%.2f %s is %.2f in Euros", amount, currency, converted);
 		} catch (RemoteException e) {
 			System.out.println("Servicio no disponible o fuera de línea. ");
 			//return;
