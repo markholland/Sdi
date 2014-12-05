@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/proyectoRobots_Camara"/>
+	<classpathentry kind="lib" path="//psf/Dropbox/Uni 14-15/Semester A/Sdi/previous year/Semana_08_(trabajo)/00_Material_inicio_trabajo/material_trabajo/material_trabajo/corba.jar"/>
+	<classpathentry kind="lib" path="//psf/Dropbox/Uni 14-15/Semester A/Sdi/previous year/Semana_08_(trabajo)/00_Material_inicio_trabajo/material_trabajo/material_trabajo/khepera.jar"/>
+	<classpathentry kind="lib" path="//psf/Dropbox/Uni 14-15/Semester A/Sdi/previous year/Semana_08_(trabajo)/00_Material_inicio_trabajo/material_trabajo/material_trabajo/robots_consola_sin_firmar.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

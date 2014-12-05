@@ -46,7 +46,7 @@ public class CamaraIntServerImpl extends corba.camara.CamaraIntPOA {
 	//
 	// IDL:corba/Camara/CamaraInt/SuscribirRobot:1.0
 	//
-	public suscripcionD
+	public synchronized suscripcionD
 	SuscribirRobot(String IORrob)
 	{
 		//EJERCICIO: Implementar la suscripcion al robot
