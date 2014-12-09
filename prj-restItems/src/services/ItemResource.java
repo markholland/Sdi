@@ -52,10 +52,7 @@ public class ItemResource {
 	  public Response decItem(String number) {
 
 		//EJERCICIO: decrementar la cantidad (definida por el par‡metro number) del item.
-		Long decrement = Long.parseLong(number);
-		Long currentAmount = DaoItems.instance.getModel().get(id).getAmount();
-		Long newAmount = currentAmount - decrement;
-		DaoItems.instance.getModel().get(id).setAmount(newAmount);
+		DaoItems.instance.getModel().get(id).decAmount(Long.parseLong(number));
 		Response res = Response.ok().build();
 	    return res;
 	  }
@@ -66,10 +63,7 @@ public class ItemResource {
 	  public Response dincItem(String number) {
 		  
 		//EJERCICIO: incrementar la cantidad (definida por el par‡metro number) del item.
-		Long increment = Long.parseLong(number);
-		Long currentAmount = DaoItems.instance.getModel().get(id).getAmount();
-		Long newAmount = currentAmount + increment;
-		DaoItems.instance.getModel().get(id).setAmount(newAmount);
+		DaoItems.instance.getModel().get(id).incAmount(Long.parseLong(number));
 		Response res = Response.ok().build();
 	    return res;
 	  }
